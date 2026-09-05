@@ -1,25 +1,25 @@
 class Jwtinfo < Formula
   desc "Command line tool to get information about JWTs (Json Web Tokens)"
   homepage "https://github.com/lmammino/jwtinfo"
-  version "0.6.1"
+  version "0.7.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/lmammino/jwtinfo/releases/download/v0.6.1/jwtinfo-aarch64-apple-darwin.tar.xz"
-      sha256 "39e54f8f3278c54d437d81c2eb398e99ccbe58acbf822afed61599976e3051f2"
+      url "https://github.com/lmammino/jwtinfo/releases/download/v0.7.0/jwtinfo-aarch64-apple-darwin.tar.xz"
+      sha256 "efc12b7e14de597046fde2202a625568d61b62684f9a4dc0996a80aa74190a74"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/lmammino/jwtinfo/releases/download/v0.6.1/jwtinfo-x86_64-apple-darwin.tar.xz"
-      sha256 "395b3e1e734c0483895e6482c503daac1bfba78234d78d37ff8ea520b2b6c7dc"
+      url "https://github.com/lmammino/jwtinfo/releases/download/v0.7.0/jwtinfo-x86_64-apple-darwin.tar.xz"
+      sha256 "e133454c1cb519b7e7832f105d9199c1c8d164a97e03c4e36de5754d4875a09f"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/lmammino/jwtinfo/releases/download/v0.6.1/jwtinfo-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "6e745874af85e24ac83474286d4120f1062571b8dd927d8e3fea67c1be156d70"
+      url "https://github.com/lmammino/jwtinfo/releases/download/v0.7.0/jwtinfo-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "e38e7a076560c8c7b2b121e8e3924a3a3979e0a5e560c669f1f25064a7531ab4"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/lmammino/jwtinfo/releases/download/v0.6.1/jwtinfo-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "532cc5c82c6c207438b6b06a8cc30d3f4259133d5b6d1ef3a59a840fa31f7d98"
+      url "https://github.com/lmammino/jwtinfo/releases/download/v0.7.0/jwtinfo-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "912e668e949c057a5ccd086f04b63adf81689ea7470eed34a16d345589eec3b5"
     end
   end
   license "MIT"
@@ -52,10 +52,18 @@ class Jwtinfo < Formula
   end
 
   def install
-    bin.install "jwtinfo" if OS.mac? && Hardware::CPU.arm?
-    bin.install "jwtinfo" if OS.mac? && Hardware::CPU.intel?
-    bin.install "jwtinfo" if OS.linux? && Hardware::CPU.arm?
-    bin.install "jwtinfo" if OS.linux? && Hardware::CPU.intel?
+    if OS.mac? && Hardware::CPU.arm?
+      bin.install "jwtinfo"
+    end
+    if OS.mac? && Hardware::CPU.intel?
+      bin.install "jwtinfo"
+    end
+    if OS.linux? && Hardware::CPU.arm?
+      bin.install "jwtinfo"
+    end
+    if OS.linux? && Hardware::CPU.intel?
+      bin.install "jwtinfo"
+    end
 
     install_binary_aliases!
 
